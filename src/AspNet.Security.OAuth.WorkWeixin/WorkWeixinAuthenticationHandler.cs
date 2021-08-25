@@ -124,7 +124,7 @@ namespace AspNet.Security.OAuth.WorkWeixin
             return redirectUri;
         }
 
-        private async Task<(int errorCode, string? userId)> GetUserIdentifierAsync(OAuthTokenResponse tokens)
+        private async Task<(int ErrorCode, string? UserId)> GetUserIdentifierAsync(OAuthTokenResponse tokens)
         {
             // See https://open.work.weixin.qq.com/api/doc/90000/90135/91023 for details.
             var code = Request.Query["code"];
@@ -149,7 +149,7 @@ namespace AspNet.Security.OAuth.WorkWeixin
             using var payload = JsonDocument.Parse(await response.Content.ReadAsStringAsync(Context.RequestAborted));
 
             int errorCode = payload.RootElement.TryGetProperty("errcode", out var errCodeElement) && errCodeElement.ValueKind == JsonValueKind.Number ? errCodeElement.GetInt32() : 0;
-            return (errorCode, userId: payload.RootElement.GetString("UserId"));
+            return (errorCode, payload.RootElement.GetString("UserId"));
         }
     }
 }

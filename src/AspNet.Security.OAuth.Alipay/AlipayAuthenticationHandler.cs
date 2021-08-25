@@ -139,7 +139,7 @@ namespace AspNet.Security.OAuth.Alipay
 
             if (!rootElement.TryGetProperty("alipay_user_info_share_response", out JsonElement mainElement))
             {
-                string errorCode = rootElement.GetProperty("error_response").GetProperty("code").GetString() !;
+                string errorCode = rootElement.GetProperty("error_response").GetProperty("code").GetString()!;
                 throw new Exception($"An error (Code:{errorCode}) occurred while retrieving user information.");
             }
 
@@ -148,7 +148,7 @@ namespace AspNet.Security.OAuth.Alipay
                 throw new Exception($"An error (Code:{code}) occurred while retrieving user information.");
             }
 
-            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, mainElement.GetString("user_id") !, ClaimValueTypes.String, Options.ClaimsIssuer));
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, mainElement.GetString("user_id")!, ClaimValueTypes.String, Options.ClaimsIssuer));
 
             var principal = new ClaimsPrincipal(identity);
             var context = new OAuthCreatingTicketContext(principal, properties, Context, Scheme, Options, Backchannel, tokens, mainElement);
@@ -177,7 +177,7 @@ namespace AspNet.Security.OAuth.Alipay
                 return true;
             }
 
-            code = codeElement.GetString() !;
+            code = codeElement.GetString()!;
             return code == "10000";
         }
 
