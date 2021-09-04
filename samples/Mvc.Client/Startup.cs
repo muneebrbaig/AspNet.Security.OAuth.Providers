@@ -61,6 +61,13 @@ namespace Mvc.Client
                 options.Scope.Add("user:email");
             })
 
+            .AddNylas(options =>
+            {
+                options.ClientId = Configuration["Nylas:ClientId"];
+                options.ClientSecret = Configuration["Nylas:ClientSecret"];
+                options.Scope.Add("email.read_only");
+            })
+
             /*
             .AddApple(options =>
             {
