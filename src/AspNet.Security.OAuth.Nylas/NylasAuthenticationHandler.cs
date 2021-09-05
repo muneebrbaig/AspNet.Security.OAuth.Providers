@@ -72,7 +72,10 @@ namespace AspNet.Security.OAuth.Nylas
             var parameters = new Dictionary<string, string>
             {
                 ["grant_type"] = "authorization_code",
-                ["redirect_uri"] = context.RedirectUri,
+                ["client_id"] = Options.ClientId,
+                ["client_secret"] = Options.ClientSecret,
+
+                // ["redirect_uri"] = context.RedirectUri,
                 ["code"] = context.Code
             };
 

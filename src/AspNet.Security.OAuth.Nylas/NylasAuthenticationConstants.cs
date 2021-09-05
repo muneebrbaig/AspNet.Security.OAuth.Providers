@@ -15,9 +15,12 @@ namespace AspNet.Security.OAuth.Nylas
     {
         public static class Claims
         {
-            public const string FamilyName = "urn:nylas:familyname";
-            public const string GivenName = "urn:nylas:givenname";
-            public const string Picture = "urn:nylas:picture";
+            public const string Id = "urn:nylas:id";
+            public const string Name = "urn:nylas:name";
+            public const string Email = "urn:nylas:email_address";
+            public const string AccountId = "urn:nylas:account_id";
+            public const string LinkedAt = "urn:nylas:linked_at";
+            public const string Provider = "urn:nylas:provider";
         }
     }
 }

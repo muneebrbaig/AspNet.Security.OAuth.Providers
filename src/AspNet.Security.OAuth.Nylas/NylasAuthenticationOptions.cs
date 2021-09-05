@@ -5,9 +5,9 @@
  */
 
 using System.Security.Claims;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using static AspNet.Security.OAuth.Nylas.NylasAuthenticationConstants;
 
 namespace AspNet.Security.OAuth.Nylas
 {
@@ -25,12 +25,13 @@ namespace AspNet.Security.OAuth.Nylas
             TokenEndpoint = NylasAuthenticationDefaults.TokenEndpoint;
             UserInformationEndpoint = NylasAuthenticationDefaults.UserInformationEndpoint;
 
-            ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
+            ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
             ClaimActions.MapJsonKey(ClaimTypes.Name, "name");
-            ClaimActions.MapJsonKey(ClaimTypes.Email, "email");
-            ClaimActions.MapJsonKey(Claims.FamilyName, "family_name");
-            ClaimActions.MapJsonKey(Claims.GivenName, "given_name");
-            ClaimActions.MapJsonKey(Claims.Picture, "picture");
+            ClaimActions.MapJsonKey(ClaimTypes.Email, "email_address");
+
+            /*ClaimActions.MapJsonKey(ClaimTypes.Email, "account_id");
+            ClaimActions.MapJsonKey(ClaimTypes.Email, "linked_at");
+            ClaimActions.MapJsonKey(ClaimTypes.Email, "provider");*/
         }
     }
 }
